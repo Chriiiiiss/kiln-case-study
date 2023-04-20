@@ -1,14 +1,16 @@
-import React from "react";
+import React, { useEffect } from "react";
 import InputEthComponent from "../components/InputEthComponent";
 
 const Home = () => {
+  const [inputValue, setInputValue] = React.useState<string>("");
+
   return (
     <>
       <main className="p-10 flex flex-col gap-y-8">
         <h1 className="text-6xl font-normal leading-normal mt-0 mb-2 text-white">
           ETH staking rewards calculator
         </h1>
-        <InputEthComponent />
+        <InputEthComponent onValueChange={setInputValue} />
         <div>
           <h2 className="text-5xl font-normal leading-normal mt-0 mb-2 text-white">
             Rewards
