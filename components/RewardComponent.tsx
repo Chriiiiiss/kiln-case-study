@@ -20,7 +20,7 @@ const RewardComponent: React.FC<RewardComponentProps> = ({
         {ETHPrice} {inputValue}
       </p>
       <div className="flex justify-between">
-        <span>Daily</span>
+        <span className="w-10">Daily</span>
         <div className="flex gap-x-2">
           <span>{formatNumber(YearlyETHReward / 365)}</span>
           <span>ETH</span>
@@ -31,7 +31,7 @@ const RewardComponent: React.FC<RewardComponentProps> = ({
         </div>
       </div>
       <div className="flex justify-between">
-        <span>Monthly</span>
+        <span className="w-10">Monthly</span>
         <div className="flex gap-x-2">
           <span>{formatNumber(YearlyETHReward / 12)}</span>
           <span>ETH</span>
@@ -42,7 +42,7 @@ const RewardComponent: React.FC<RewardComponentProps> = ({
         </div>
       </div>
       <div className="flex justify-between">
-        <span>Yearly</span>
+        <span className="w-10">Yearly</span>
         <div className="flex gap-x-2">
           <span>{formatNumber(YearlyETHReward)}</span>
           <span>ETH</span>
