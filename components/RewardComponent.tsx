@@ -16,9 +16,6 @@ const RewardComponent: React.FC<RewardComponentProps> = ({
 
   return (
     <div className="text-white flex flex-col gap-y-8">
-      <p>
-        {ETHPrice} {inputValue}
-      </p>
       <div className="flex justify-between">
         <span className="w-10">Daily</span>
         <div className="flex gap-x-2">
