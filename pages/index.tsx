@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import InputEthComponent from "../components/InputEthComponent";
+import InputEthComponent from "@/components/InputEthComponent";
 
 const Home = () => {
   const [inputValue, setInputValue] = React.useState<string>("");
