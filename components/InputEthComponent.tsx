@@ -11,9 +11,7 @@ const InputEthComponent: React.FC<InputEthComponentProps> = ({
     const value = event.target.value;
     if (parseInt(value) >= 32) {
       onValueChange(parseInt(value));
-    }
-
-    if (value === "") {
+    } else {
       onValueChange(0);
     }
   };

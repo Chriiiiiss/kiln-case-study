@@ -12,40 +12,42 @@ const RewardComponent: React.FC<RewardComponentProps> = ({
   ETHPrice,
   inputValue,
 }) => {
-  let YearlyETHReward = calcETHYearlyReward(inputValue);
+  let yearlyETHReward = calcETHYearlyReward(inputValue);
+  let dailyRewards = calcETHYearlyReward(inputValue) / 365;
+  let monthlyRewards = calcETHYearlyReward(inputValue) / 12;
 
   return (
     <div className="text-white flex flex-col gap-y-8">
       <div className="flex justify-between">
         <span className="w-10">Daily</span>
         <div className="flex gap-x-2">
-          <span>{formatNumber(YearlyETHReward / 365)}</span>
+          <span>{formatNumber(dailyRewards, 3)}</span>
           <span>ETH</span>
         </div>
         <div className="flex gap-x-2">
-          <span>{formatPrice((YearlyETHReward / 365) * ETHPrice)}</span>
+          <span>{formatPrice(dailyRewards * ETHPrice)}</span>
           <span>$</span>
         </div>
       </div>
       <div className="flex justify-between">
         <span className="w-10">Monthly</span>
         <div className="flex gap-x-2">
-          <span>{formatNumber(YearlyETHReward / 12)}</span>
+          <span>{formatNumber(monthlyRewards)}</span>
           <span>ETH</span>
         </div>
         <div className="flex gap-x-2">
-          <span>{formatPrice((YearlyETHReward / 12) * ETHPrice)}</span>
+          <span>{formatPrice(monthlyRewards * ETHPrice)}</span>
           <span>$</span>
         </div>
       </div>
       <div className="flex justify-between">
         <span className="w-10">Yearly</span>
         <div className="flex gap-x-2">
-          <span>{formatNumber(YearlyETHReward)}</span>
+          <span>{formatNumber(yearlyETHReward)}</span>
           <span>ETH</span>
         </div>
         <div className="flex gap-x-2">
-          <span>{formatPrice(YearlyETHReward * ETHPrice)}</span>
+          <span>{formatPrice(yearlyETHReward * ETHPrice)}</span>
           <span>$</span>
         </div>
       </div>

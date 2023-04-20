@@ -26,7 +26,8 @@ const Home = () => {
           <h2 className="text-5xl font-normal leading-normal mt-0 mb-2 text-white">
             Rewards
           </h2>
-          {error ? (
+          {isLoading && <p className="text-white">Loading...</p>}
+          {error && !isLoading ? (
             <p className="text-red-800">Failed to fetch the API</p>
           ) : (
             <RewardComponent ETHPrice={ETHPrice} inputValue={inputValue} />
