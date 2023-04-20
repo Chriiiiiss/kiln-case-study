@@ -1,10 +1,11 @@
 import React, { useEffect } from "react";
 import InputEthComponent from "@/components/InputEthComponent";
+import RewardComponent from "@/components/RewardComponent";
 import { fetchEthPrice } from "@/src/lib/api";
 import { useQuery } from "react-query";
 
 const Home = () => {
-  const [inputValue, setInputValue] = React.useState<string>("");
+  const [inputValue, setInputValue] = React.useState<number>(0);
   const [ETHPrice, setETHPrice] = React.useState<number>(0);
   const { data, error, isLoading } = useQuery("eth", fetchEthPrice);
 
@@ -25,17 +26,11 @@ const Home = () => {
           <h2 className="text-5xl font-normal leading-normal mt-0 mb-2 text-white">
             Rewards
           </h2>
-          <div className="text-white">
-            <div>
-              <span>Daily</span>
-            </div>
-            <div>
-              <span>Monthly</span>
-            </div>
-            <div>
-              <span>Yearly</span>
-            </div>
-          </div>
+          {error ? (
+            <p className="text-red-800">Failed to fetch the API</p>
+          ) : (
+            <RewardComponent ETHPrice={ETHPrice} inputValue={inputValue} />
+          )}
         </div>
       </main>
     </>

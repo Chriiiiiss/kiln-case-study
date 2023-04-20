@@ -1,5 +1,7 @@
+import { formatNumber } from "@/src/utils";
+
 interface InputEthComponentProps {
-  onValueChange: (value: string) => void;
+  onValueChange: (value: number) => void;
 }
 
 const InputEthComponent: React.FC<InputEthComponentProps> = ({
@@ -7,7 +9,13 @@ const InputEthComponent: React.FC<InputEthComponentProps> = ({
 }) => {
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const value = event.target.value;
-    onValueChange(value);
+    if (parseInt(value) >= 32) {
+      onValueChange(parseInt(value));
+    }
+
+    if (value === "") {
+      onValueChange(0);
+    }
   };
 
   return (
@@ -22,8 +30,9 @@ const InputEthComponent: React.FC<InputEthComponentProps> = ({
       </div>
       <input
         className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-        type="text"
-        placeholder="0"
+        type="number"
+        min={32}
+        placeholder="32"
         onChange={handleInputChange}
       />
     </div>
