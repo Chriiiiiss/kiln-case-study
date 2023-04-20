@@ -1,8 +1,18 @@
 import React, { useEffect } from "react";
 import InputEthComponent from "@/components/InputEthComponent";
+import { fetchEthPrice } from "@/src/lib/api";
+import { useQuery } from "react-query";
 
 const Home = () => {
   const [inputValue, setInputValue] = React.useState<string>("");
+  const [ETHPrice, setETHPrice] = React.useState<number>(0);
+  const { data, error, isLoading } = useQuery("eth", fetchEthPrice);
+
+  useEffect(() => {
+    if (!isLoading && data) {
+      setETHPrice(data.ethereum.usd);
+    }
+  }, [isLoading, data, error]);
 
   return (
     <>
